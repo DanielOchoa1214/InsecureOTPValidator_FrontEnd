@@ -1,0 +1,7 @@
+.not-in-screen {
+    display: none !important;
+}
+
+small {
+    color: red;
+}
