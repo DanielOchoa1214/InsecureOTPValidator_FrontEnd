@@ -17,18 +17,56 @@
 
     </head>
     <body onload="auth.init()">
-        <form id="login-form">
-            <label>
-                User: 
-                <input type="text" id="user" required/>
-            </label>
-            <label>
-                Password:
-                <input type="password" id="password" required/>
-            </label>
-            <button id="login-btn" type="submit">Login</button>
-            <small id="error-text"></small>
-        </form>
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div id="login-form-div" class="card col-6">
+                    <form id="login-form">
+                        <img class="card-img-top" src="./resourses/images/login-img.jpeg" alt="Img">
+                        <div class="card-body">
+                            <h5 class="card-title">Login</h5>
+                            <div class="card-text">
+                                <div class="mb-4">
+                                    <label class="form-label" for="user">Username</label>
+                                    <input type="email" id="user" class="form-control" placeholder="Phone number or email address" autocomplete="off" required/>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input type="password" id="password" class="form-control" required/>
+                                </div>
+                                <div class="text-center d-grid gap-2 col-6 mx-auto mt-5">
+                                    <button id="login-btn" class="btn btn-info mb-3" type="submit">Login</button>
+                                    <a class="text-muted" href="#!">Forgot password?</a>
+                                    <small id="error-text"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="recover-div" class="card col-4">
+                    <form id="recover-form">
+                        <img class="card-img-top" src="./resourses/images/login-img.jpeg" alt="Img">
+                        <div class="card-body">
+                            <h5 class="card-title">Recover Password</h5>
+                            <div class="card-text">
+                                <div class="mb-4">
+                                    <label class="form-label" for="recover-user">Type? your email and we will send you an email to recover your password</label>
+                                    <input type="email" id="recover-user" class="form-control" placeholder="Phone number or email address" autocomplete="off" required/>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" for="otp">Type? the code sent to your email:</label>
+                                    <input type="text" id="otp" class="form-control" autocomplete="off" required/>
+                                </div>
+                                <div class="text-center d-grid gap-2 col-6 mx-auto mt-5">
+                                    <button id="recover-btn" class="btn btn-info mb-3" type="submit">Get OTP</button>
+                                    <button id="send-otp-btn" class="btn btn-info mb-3" type="submit">Send OTP</button>
+                                    <small id="error-text"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div id="login-success" class="not-in-screen">ENTRASTE!!</div>
         <script src="./static/js/enviroment.js"></script>
         <script src="./static/js/authclient.js"></script>

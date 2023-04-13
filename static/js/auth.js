@@ -10,7 +10,7 @@ let auth = (function (api) {
             let password = _passwordInput.val();
             api.login(username, password).then((res) => {
                 if(res) {
-                    $("#login-form").addClass("not-in-screen");
+                    $(".container").first().addClass("not-in-screen");
                     $("#login-success").removeClass("not-in-screen");
                 } else {
                     $("#error-text").text("Incorrect Username or Password");

@@ -1,7 +1,18 @@
+#login-form-div{
+    padding: 0 !important;
+}
 .not-in-screen {
     display: none !important;
 }
 
 small {
     color: red;
+}
+
+img {
+    width: 100%;
+}
+
+body,html{
+    height:100%;
 }
