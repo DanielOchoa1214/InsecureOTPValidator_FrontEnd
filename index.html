@@ -35,35 +35,43 @@
                                 </div>
                                 <div class="text-center d-grid gap-2 col-6 mx-auto mt-5">
                                     <button id="login-btn" class="btn btn-info mb-3" type="submit">Login</button>
-                                    <a class="text-muted" href="#!">Forgot password?</a>
+                                    <a id="forgot-password-a" class="text-muted" href="#!">Forgot password?</a>
                                     <small id="error-text"></small>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div id="recover-div" class="card col-4">
-                    <form id="recover-form">
-                        <img class="card-img-top" src="./resourses/images/login-img.jpeg" alt="Img">
-                        <div class="card-body">
-                            <h5 class="card-title">Recover Password</h5>
-                            <div class="card-text">
+                <div id="recover-div" class="card col-4 not-in-screen">
+                    <img class="card-img-top" src="./resourses/images/login-img.jpeg" alt="Img">
+                    <div class="card-body">
+                        <h5 class="card-title">Recover Password</h5>
+                        <div class="card-text">
+                            <form id="recover-form">
                                 <div class="mb-4">
-                                    <label class="form-label" for="recover-user">Type? your email and we will send you an email to recover your password</label>
-                                    <input type="email" id="recover-user" class="form-control" placeholder="Phone number or email address" autocomplete="off" required/>
+                                    <label class="form-label" for="recover-user">Type? your phone number and we will send you an SMS to recover your password</label>
+                                    <input type="email" id="recover-user" class="form-control" placeholder="Phone number" autocomplete="off" required/>
                                 </div>
+                                <div class="text-center d-grid gap-2 col-6 mx-auto mt-5">
+                                    <button id="recover-btn" class="btn btn-info mb-3" type="submit">Send</button>
+                                </div>
+                            </form>
+                            <form id="validate-otp-form" class="not-in-screen">
                                 <div class="mb-4">
                                     <label class="form-label" for="otp">Type? the code sent to your email:</label>
                                     <input type="text" id="otp" class="form-control" autocomplete="off" required/>
                                 </div>
                                 <div class="text-center d-grid gap-2 col-6 mx-auto mt-5">
-                                    <button id="recover-btn" class="btn btn-info mb-3" type="submit">Get OTP</button>
-                                    <button id="send-otp-btn" class="btn btn-info mb-3" type="submit">Send OTP</button>
+                                    <button id="send-otp-btn" class="btn btn-info mb-3" type="submit">Validate</button>
                                     <small id="error-text"></small>
                                 </div>
+                            </form>
+                            <div class="text-center d-grid gap-2 col-6 mx-auto mt-1">
+                                <button id="back-to-login" class="btn btn-danger">Go Back</button>
+                                <small id="error-text">putito</small>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

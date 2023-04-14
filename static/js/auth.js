@@ -17,6 +17,16 @@ let auth = (function (api) {
                 }
             });
         });
+
+        $("#forgot-password-a").click(() => {
+            $("#login-form-div").addClass("not-in-screen");
+            $("#recover-div").removeClass("not-in-screen");
+        });
+
+        $("#back-to-login").click(() => {
+            $("#recover-div").addClass("not-in-screen");
+            $("#login-form-div").removeClass("not-in-screen");
+        });
     };
 
     return _publicFunctions;
