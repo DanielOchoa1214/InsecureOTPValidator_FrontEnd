@@ -2,12 +2,12 @@ let authclient = (function () {
     let _server = enviroment.server;
     let _publicFunctions = {};
 
-    let _errorLogin = (err) => {
-        $("#error-text").text(err.responseText);
+    let _error = (err) => {
+        $(".error-text").text(err.responseText);
     }
 
-    let _successfullLogin = () => {
-        $("#error-text").text("");
+    let _success = () => {
+        $(".error-text").text("");
     }
 
     _publicFunctions.login = function (username, password) {  
@@ -19,8 +19,33 @@ let authclient = (function () {
                 password: password,
             },
             contentType: "application/json",
-            error: (err) => _errorLogin(err),
-            success: () => _successfullLogin(),
+            error: (err) => _error(err),
+            success: () => _success(),
+        });
+    };
+
+    _publicFunctions.sendOTP = function (username) {  
+        return $.ajax({
+            url: `${_server}/auth/passwords`,
+            type: 'POST',
+            data: JSON.stringify({userName: username}),
+            contentType: "application/json",
+            error: (err) => _error(err),
+            success: () => _success(),
+        });
+    };
+
+    _publicFunctions.verifyOTP = function (username, otp) {  
+        return $.ajax({
+            url: `${_server}/auth/passwords`,
+            type: 'GET',
+            data: {
+                user: username,
+                otp: otp,
+            },
+            contentType: "application/json",
+            error: (err) => _error(err),
+            success: () => _success(),
         });
     };
 
