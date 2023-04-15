@@ -49,5 +49,19 @@ let authclient = (function () {
         });
     };
 
+    _publicFunctions.changePassword = function (userName, password) {  
+        return $.ajax({
+            url: `${_server}/auth/passwords`,
+            type: 'PUT',
+            data: JSON.stringify({
+                userName: userName,
+                password: password,
+            }),
+            contentType: "application/json",
+            error: (err) => _error(err),
+            success: () => _success(),
+        });
+    };
+
     return _publicFunctions;
 })();

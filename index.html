@@ -68,7 +68,7 @@
                                 </div>
                             </form>
                             <div class="text-center d-grid gap-2 col-6 mx-auto mt-1">
-                                <button id="back-to-login" class="btn btn-danger">Go Back</button>
+                                <button class="btn btn-danger back-to-login">Go Back</button>
                                 <small class="error-text"></small>
                             </div>
                         </div>
@@ -91,6 +91,8 @@
                                 <div id="change-password-btn" >
                                     <div class="text-center d-grid gap-2 col-6 mx-auto mt-5">
                                         <button class="btn btn-info mb-3" type="submit">Confirm</button>
+                                        <button class="btn btn-danger back-to-login" type="button">Go Back</button>
+                                        <small class="error-text"></small>
                                     </div>
                                 </div>
                             </form>
@@ -99,14 +101,13 @@
                 </div>
             </div>
         </div>
-        <!-- Arreglar content -->
-        <div id="login-success" class="not-in-screen">
-            <div class="container h-80">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-10">
-                        <h2>INFO SUPER SECRETA :O</h2>
-                        <img src="./resourses/images/gif-info.gif" alt="Peppo GIF" width="500px">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div id="login-success" class="card col-8 not-in-screen">
+                    <div class="card-body">
+                        <h1 class="card-title">You did it!! Here's our super secret info: </h1>
                     </div>
+                    <img class="card-img-bottom" src="./resourses/images/gif-info.gif" alt="Img">
                 </div>
             </div>
         </div>

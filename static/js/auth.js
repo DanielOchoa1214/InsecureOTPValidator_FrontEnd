@@ -25,10 +25,10 @@ let auth = (function (api) {
         });
     };
 
-    let _setBack = () => {
-        $("#back-to-login").click(() => {
+    let _setBack = (from) => {
+        $(".back-to-login").click(() => {
             tries = 0;
-            $("#recover-div").addClass("not-in-screen");
+            $(`#${from}`).addClass("not-in-screen");
             $("#login-form-div").removeClass("not-in-screen");
         });
     };
@@ -45,31 +45,50 @@ let auth = (function (api) {
         });
     };
 
+    let _checkChangeForms = (condition) => {
+        if (condition) {
+            $("#recover-div").addClass("not-in-screen");
+            $("#change-password").removeClass("not-in-screen");
+            $(".error-text").text("");
+            //OIDC
+        } else {
+            $(".error-text").text("Incorrect, try again");
+        }
+    };
+
     let _backValidateOTP = () => {
         let username = $("#recover-user").val();
         let otp = $("#otp").val();
         api.verifyOTP(username, otp).then((res) => {
             console.log(res);
-            if (res) {
-                // Crear formulario de cambio de contraseña y la API para ello / pasar al siguiente formulario
-                $("#recover-div").addClass("not-in-screen");
-                $("#change-password").removeClass("not-in-screen");
-                $(".error-text").text("");
-                //OIDC
-            } else {
-                $(".error-text").text("Incorrect, try again");
-            }
+            _checkChangeForms(res);
         });
     };
 
     let _frontValidateOTP = () => {
         let otp = $("#otp").val();
-        if(otp === _otp){
-            $("#recover-div").addClass("not-in-screen");
-            $("#change-password").removeClass("not-in-screen");
+        _checkChangeForms(otp === _otp);
+    };
+
+    let _checkTooMuchAttempts = () => {
+        tries++;
+        if(tries === 5){
+            alert("You've exeded the maximum amount of atempts, the page will now reload and you can try again");
+            location.reload();
+        }
+    };
+
+    let _changePassword = () => {
+        let newPass = $("#new-password").val();
+        let newPassConfirm = $("#confirm-password").val();
+        let username = $("#recover-user").val();
+        if(newPass === newPassConfirm){
+            api.changePassword(username, newPass).then((res) => {
+                alert(res);
+            });
             $(".error-text").text("");
         } else {
-            $(".error-text").text("Incorrect, try again");
+            $(".error-text").text("The inputs don't match each other, try again");
         }
     };
 
@@ -84,19 +103,19 @@ let auth = (function (api) {
         });
         $("#validate-otp-form").submit((event) => {
             event.preventDefault();
-            // Revisar intentos
-            if(tries !== 5){
-                _backValidateOTP();
-                // _frontValidateOTP();
-                tries++;
-            } else {
-                alert("You've exeded the maximum amount of atempts, the page will now reload and you can try again");
-                location.reload();
-            }
+            // _backValidateOTP();
+            _frontValidateOTP();
+            _checkTooMuchAttempts();
+        });
+        $("#change-password-form").submit((event) => {
+            event.preventDefault();
+            _changePassword();
         });
         // Crear cambio de contraseña
         _setALink();
-        _setBack();        
+        _setBack("recover-div");  
+        // El cambio deberia tener un regresar?? Segun yo no, simplemente la alerta y se actualiza la pagina
+        _setBack("change-password")      
     };
 
     return _publicFunctions;
