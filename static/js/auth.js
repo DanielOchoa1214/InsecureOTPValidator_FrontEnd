@@ -48,18 +48,29 @@ let auth = (function (api) {
     let _backValidateOTP = () => {
         let username = $("#recover-user").val();
         let otp = $("#otp").val();
-        // Revisar como se limitan los intentos tal vez se puede con html ??? PauseChamp
         api.verifyOTP(username, otp).then((res) => {
+            console.log(res);
             if (res) {
-                // Crear formulario de cambio de contraseña y la API para ello
+                // Crear formulario de cambio de contraseña y la API para ello / pasar al siguiente formulario
+                $("#recover-div").addClass("not-in-screen");
+                $("#change-password").removeClass("not-in-screen");
+                $(".error-text").text("");
+                //OIDC
             } else {
-                tries++;
+                $(".error-text").text("Incorrect, try again");
             }
         });
     };
 
     let _frontValidateOTP = () => {
-
+        let otp = $("#otp").val();
+        if(otp === _otp){
+            $("#recover-div").addClass("not-in-screen");
+            $("#change-password").removeClass("not-in-screen");
+            $(".error-text").text("");
+        } else {
+            $(".error-text").text("Incorrect, try again");
+        }
     };
 
     _publicFunctions.init = function () {  
@@ -73,9 +84,17 @@ let auth = (function (api) {
         });
         $("#validate-otp-form").submit((event) => {
             event.preventDefault();
-            _backValidateOTP();
-            _frontValidateOTP();
-        })
+            // Revisar intentos
+            if(tries !== 5){
+                _backValidateOTP();
+                // _frontValidateOTP();
+                tries++;
+            } else {
+                alert("You've exeded the maximum amount of atempts, the page will now reload and you can try again");
+                location.reload();
+            }
+        });
+        // Crear cambio de contraseña
         _setALink();
         _setBack();        
     };

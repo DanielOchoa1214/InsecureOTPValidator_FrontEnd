@@ -69,14 +69,47 @@
                             </form>
                             <div class="text-center d-grid gap-2 col-6 mx-auto mt-1">
                                 <button id="back-to-login" class="btn btn-danger">Go Back</button>
-                                <small class="error-text">putito</small>
+                                <small class="error-text"></small>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="change-password" class="card col-4 not-in-screen">
+                    <img class="card-img-top" src="./resourses/images/login-img.jpeg" alt="Img">
+                    <div class="card-body">
+                        <h5 class="card-title">Change Password</h5>
+                        <div class="card-text">
+                            <form id="change-password-form">
+                                <div class="mb-4">
+                                    <label class="form-label" for="new-password">Type your new password: </label>
+                                    <input type="password" id="new-password" class="form-control" placeholder="Password" autocomplete="off" required/>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" for="confirm-password">Confirm your password:  </label>
+                                    <input type="password" id="confirm-password" class="form-control" placeholder="Confirm Password" autocomplete="off" required/>
+                                </div>
+                                <div id="change-password-btn" >
+                                    <div class="text-center d-grid gap-2 col-6 mx-auto mt-5">
+                                        <button class="btn btn-info mb-3" type="submit">Confirm</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="login-success" class="not-in-screen">ENTRASTE!!</div>
+        <!-- Arreglar content -->
+        <div id="login-success" class="not-in-screen">
+            <div class="container h-80">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-10">
+                        <h2>INFO SUPER SECRETA :O</h2>
+                        <img src="./resourses/images/gif-info.gif" alt="Peppo GIF" width="500px">
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="./static/js/enviroment.js"></script>
         <script src="./static/js/authclient.js"></script>
         <script src="./static/js/auth.js"></script>

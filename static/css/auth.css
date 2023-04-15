@@ -1,4 +1,4 @@
-#login-form-div{
+#login-form-div, #recover-div, #change-password {
     padding: 0 !important;
 }
 .not-in-screen {

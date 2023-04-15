@@ -12,7 +12,7 @@ let authclient = (function () {
 
     _publicFunctions.login = function (username, password) {  
         return $.ajax({
-            url: `${_server}/auth`,
+            url: `${_server}/auth/login`,
             type: 'GET',
             data: {
                 user: username,
