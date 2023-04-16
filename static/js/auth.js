@@ -38,7 +38,7 @@ let auth = (function (api) {
         api.sendOTP(username).then((res) => {
             tries = 0;
             _otp = res;
-            alert(`The email was sent to ${username} check it and with it fill the next field`);
+            alert(`An email was sent to ${username} with the code to recover your password`);
             $("#recover-btn").addClass("not-in-screen");
             $("#validate-otp-form").removeClass("not-in-screen");
             console.log(_otp);
@@ -73,7 +73,7 @@ let auth = (function (api) {
     let _checkTooMuchAttempts = () => {
         tries++;
         if(tries === 5){
-            alert("You've exeded the maximum amount of atempts, the page will now reload and you can try again");
+            alert("You've exceded the maximum amount of atempts, the page will now reload and you can try again");
             location.reload();
         }
     };
@@ -85,6 +85,7 @@ let auth = (function (api) {
         if(newPass === newPassConfirm){
             api.changePassword(username, newPass).then((res) => {
                 alert(res);
+                location.reload();
             });
             $(".error-text").text("");
         } else {
@@ -111,11 +112,8 @@ let auth = (function (api) {
             event.preventDefault();
             _changePassword();
         });
-        // Crear cambio de contraseña
         _setALink();
-        _setBack("recover-div");  
-        // El cambio deberia tener un regresar?? Segun yo no, simplemente la alerta y se actualiza la pagina
-        _setBack("change-password")      
+        _setBack("recover-div");   
     };
 
     return _publicFunctions;
